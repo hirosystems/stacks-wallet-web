@@ -45,7 +45,7 @@ const selectCurrentNetworkNativeSegwitAccountBuilder = createSelector(
     nativeSegwitKeychains[bitcoinNetworkToNetworkMode(network.chain.bitcoin.bitcoinNetwork)]
 );
 
-function useNativeSegwitAccountBuilder() {
+export function useGenerateNativeSegwitAccount() {
   return useSelector(selectCurrentNetworkNativeSegwitAccountBuilder);
 }
 
@@ -72,7 +72,7 @@ export function useNativeSegwitNetworkSigners() {
 }
 
 export function useNativeSegwitSigner(accountIndex: number) {
-  const account = useNativeSegwitAccountBuilder()(accountIndex);
+  const account = useGenerateNativeSegwitAccount()(accountIndex);
   const extendedPublicKeyVersions = useBitcoinExtendedPublicKeyVersions();
 
   return useMemo(() => {

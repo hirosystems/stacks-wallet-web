@@ -69,7 +69,7 @@ const manifest = {
   manifest_version: 3,
   author: 'Leather Wallet, LLC',
   description: 'Leather Bitcoin Wallet - Your Bitcoin Wallet for DeFi, NFTs, Ordinals, and dApps',
-  permissions: ['contextMenus', 'storage', 'unlimitedStorage'],
+  permissions: ['contextMenus', 'storage', 'unlimitedStorage', 'notifications', 'gcm'],
   commands: {
     _execute_browser_action: {
       suggested_key: {

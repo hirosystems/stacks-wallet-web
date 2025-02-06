@@ -39,6 +39,12 @@ const selectCurrentNetworkTaprootAccountBuilder = createSelector(
   selectCurrentNetwork,
   (taprootKeychains, network) => taprootKeychains[network.chain.bitcoin.mode]
 );
+
+export function useGenerateTaprootAccount() {
+  const generateTaprootAccount = useSelector(selectCurrentNetworkTaprootAccountBuilder);
+  return useMemo(() => generateTaprootAccount, [generateTaprootAccount]);
+}
+
 const selectCurrentTaprootAccount = createSelector(
   selectCurrentNetworkTaprootAccountBuilder,
   selectCurrentAccountIndex,

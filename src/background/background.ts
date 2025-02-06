@@ -1,6 +1,8 @@
 //
 // This file is the entrypoint to the extension's background script
 // https://developer.chrome.com/docs/extensions/mv3/architecture-overview/#background_script
+import { onBackgroundMessage } from 'firebase/messaging/sw';
+
 import { logger } from '@shared/logger';
 import { CONTENT_SCRIPT_PORT, type LegacyMessageFromContentScript } from '@shared/message-types';
 import { WalletRequests } from '@shared/rpc/rpc-methods';
@@ -13,9 +15,30 @@ import {
   isLegacyMessage,
 } from './messaging/legacy/legacy-external-message-handler';
 import { rpcMessageHandler } from './messaging/rpc-message-handler';
+import { initializeFirebaseCloudMessaging } from './register-firebase';
 
 initContextMenuActions();
 warnUsersAboutDevToolsDangers();
+
+const { onPushNotification } = initializeFirebaseCloudMessaging();
+
+onPushNotification(payload => {
+  console.log('payload in');
+  const notification = payload.notification;
+  if (!notification) return;
+  console.log('firing notification');
+  chrome.notifications.create(
+    {
+      title: notification.title ?? 'default notification',
+      message: notification.body ?? 'default body',
+      iconUrl: notification.icon ?? 'https://placekittens.com/200/300',
+      type: 'basic',
+    },
+    notificationId => {
+      console.log('notificationId', notificationId);
+    }
+  );
+});
 
 chrome.runtime.onInstalled.addListener(async details => {
   if (details.reason === 'install' && process.env.WALLET_ENVIRONMENT !== 'testing') {
