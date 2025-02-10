@@ -1,6 +1,6 @@
 import { Box, BoxProps } from 'leather-styles/jsx';
 
-import { Avatar, DynamicColorCircle, StxAvatarIcon, defaultFallbackDelay } from '@leather.io/ui';
+import { Avatar, DynamicColorCircle, StxAvatarIcon } from '@leather.io/ui';
 
 interface StacksAssetAvatarProps extends BoxProps {
   img?: string;
@@ -13,20 +13,14 @@ export function StacksAssetAvatar({
   gradientString,
   img,
   isStx,
-  size = '36',
+  size = '40',
   ...props
 }: StacksAssetAvatarProps) {
   if (isStx) return <StxAvatarIcon />;
 
   const { color } = props;
 
-  if (img)
-    return (
-      <Avatar.Root>
-        <Avatar.Image alt="FT" src={encodeURI(img)} />
-        <Avatar.Fallback delayMs={defaultFallbackDelay}>FT</Avatar.Fallback>
-      </Avatar.Root>
-    );
+  if (img) return <Avatar image={encodeURI(img)} fallback="FT" />;
 
   if (!gradientString) return null;
 

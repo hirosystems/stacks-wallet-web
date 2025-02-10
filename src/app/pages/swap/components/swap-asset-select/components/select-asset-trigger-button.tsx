@@ -4,13 +4,7 @@ import { SwapSelectors } from '@tests/selectors/swap.selectors';
 import { useField } from 'formik';
 import { HStack, styled } from 'leather-styles/jsx';
 
-import {
-  Avatar,
-  Button,
-  ChevronDownIcon,
-  defaultFallbackDelay,
-  getAvatarFallback,
-} from '@leather.io/ui';
+import { Avatar, Button, ChevronDownIcon } from '@leather.io/ui';
 import { isString } from '@leather.io/utils';
 
 interface SelectAssetTriggerButtonProps {
@@ -26,7 +20,7 @@ export function SelectAssetTriggerButton({
   symbol,
 }: SelectAssetTriggerButtonProps) {
   const [field] = useField(name);
-  const fallback = getAvatarFallback(symbol);
+  const fallback = symbol.slice(0, 2);
 
   return (
     <Button
@@ -37,14 +31,7 @@ export function SelectAssetTriggerButton({
       {...field}
     >
       <HStack>
-        {icon && isString(icon) ? (
-          <Avatar.Root>
-            <Avatar.Image alt={fallback} src={icon} />
-            <Avatar.Fallback delayMs={defaultFallbackDelay}>{fallback}</Avatar.Fallback>
-          </Avatar.Root>
-        ) : (
-          icon
-        )}
+        {icon && isString(icon) ? <Avatar fallback={fallback} image={icon} /> : icon}
         <styled.span textStyle="label.01">{symbol}</styled.span>
         <ChevronDownIcon variant="small" />
       </HStack>
