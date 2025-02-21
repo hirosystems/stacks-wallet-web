@@ -73,6 +73,9 @@ export function useCurrentStacksNetworkState(): StacksNetwork {
         [ChainId.Mainnet]: TransactionVersion.Mainnet,
         [ChainId.Testnet]: TransactionVersion.Testnet,
       }),
+      client: {
+        baseUrl: currentNetwork.chain.stacks.url,
+      },
       chainId: currentNetwork.chain.stacks.subnetChainId ?? currentNetwork.chain.stacks.chainId,
       bnsLookupUrl: currentNetwork.chain.stacks.url || '',
     }),
