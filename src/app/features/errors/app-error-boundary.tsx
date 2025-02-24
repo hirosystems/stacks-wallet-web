@@ -4,10 +4,9 @@ import BroadcastError from '@assets/images/unhappy-face-ui.png';
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
 import { Box, Center, Flex, HStack, styled } from 'leather-styles/jsx';
 
-import { Button, CopyIcon, Link } from '@leather.io/ui';
+import { Button, CopyIcon, Link, Prism } from '@leather.io/ui';
 import { isError } from '@leather.io/utils';
 
-import { Prism } from '@app/common/clarity-prism';
 import { useClipboard } from '@app/common/hooks/use-copy-to-clipboard';
 import { compliantErrorBody } from '@app/query/common/compliance-checker/compliance-checker.query';
 import { CodeBlock } from '@app/ui/components/codeblock';

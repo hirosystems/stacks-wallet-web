@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import { Box, BoxProps } from 'leather-styles/jsx';
 
-import { Highlighter, HighlighterProps } from './highlighter';
+import { Highlighter, HighlighterProps } from '@leather.io/ui';
 
 type CodeBlockProps = HighlighterProps & BoxProps;
 

@@ -2,9 +2,8 @@ import { useState } from 'react';
 
 import { HStack, HTMLStyledProps, Stack, styled } from 'leather-styles/jsx';
 
-import { Title } from '@leather.io/ui';
+import { Prism, Title } from '@leather.io/ui';
 
-import { Prism } from '@app/common/clarity-prism';
 import { AttachmentRow } from '@app/features/stacks-transaction-request/attachment-row';
 import { ContractPreviewLayout } from '@app/features/stacks-transaction-request/contract-preview';
 import { Row } from '@app/features/stacks-transaction-request/row';
