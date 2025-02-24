@@ -130,5 +130,33 @@
     "SNGWPN3XDAQE673MXYXF81016M50NHF5X5PWWM70.sbtc-token::sbtc-token",
     "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token::sbtc-token"
   ],
-  "spamFilterWhitelist": ["DOG.GO.TO.THE.MOON", "DOG.GO.TO.THE.MOON Transfer"]
+  "spamFilterWhitelist": ["DOG.GO.TO.THE.MOON", "DOG.GO.TO.THE.MOON Transfer"],
+  "stacksContractCallFeeEstimations": {
+    "low": {
+      "min": 2500,
+      "max": 2999
+    },
+    "standard": {
+      "min": 3000,
+      "max": 10000
+    },
+    "high": {
+      "min": 10000,
+      "max": 1000001
+    }
+  },
+  "stacksContractDeploymentFeeEstimations": {
+    "low": {
+      "min": 10000,
+      "max": 50000
+    },
+    "standard": {
+      "min": 100001,
+      "max": 500000
+    },
+    "high": {
+      "min": 1000001,
+      "max": 2000000
+    }
+  }
 }
