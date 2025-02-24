@@ -2,13 +2,7 @@ import { SwapSelectors } from '@tests/selectors/swap.selectors';
 import { sanitize } from 'dompurify';
 
 import { type SwapAsset, isFtAsset, useGetFungibleTokenMetadataQuery } from '@leather.io/query';
-import {
-  Avatar,
-  ItemLayout,
-  Pressable,
-  defaultFallbackDelay,
-  getAvatarFallback,
-} from '@leather.io/ui';
+import { Avatar, ItemLayout, Pressable } from '@leather.io/ui';
 import { formatMoneyWithoutSymbol, isString } from '@leather.io/utils';
 
 import { convertSwapAssetBalanceToFiat } from '@app/pages/swap/swap.utils';
@@ -22,7 +16,7 @@ export function SwapAssetItem({ asset, onClick }: SwapAssetItemProps) {
 
   const ftMetadataName = ftMetadata && isFtAsset(ftMetadata) ? ftMetadata.name : asset.name;
   const displayName = asset.displayName ?? ftMetadataName;
-  const fallback = getAvatarFallback(asset.name);
+  const fallback = asset.name.slice(0, 2);
   const fiatBalance = convertSwapAssetBalanceToFiat(asset);
 
   return (
@@ -30,10 +24,7 @@ export function SwapAssetItem({ asset, onClick }: SwapAssetItemProps) {
       <ItemLayout
         img={
           isString(asset.icon) ? (
-            <Avatar.Root>
-              <Avatar.Image alt={fallback} src={sanitize(asset.icon)} />
-              <Avatar.Fallback delayMs={defaultFallbackDelay}>{fallback}</Avatar.Fallback>
-            </Avatar.Root>
+            <Avatar image={sanitize(asset.icon)} fallback={fallback} />
           ) : (
             asset.icon
           )

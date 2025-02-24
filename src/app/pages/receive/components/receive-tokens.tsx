@@ -12,7 +12,6 @@ import {
   RunesAvatarIcon,
   Src20AvatarIcon,
   StxAvatarIcon,
-  defaultFallbackDelay,
 } from '@leather.io/ui';
 import { isString } from '@leather.io/utils';
 
@@ -118,10 +117,7 @@ export function ReceiveTokens({
           address={asset.address}
           icon={
             isString(asset.icon) ? (
-              <Avatar.Root>
-                <Avatar.Image alt={asset.fallback} src={asset.icon} />
-                <Avatar.Fallback delayMs={defaultFallbackDelay}>{asset.fallback}</Avatar.Fallback>
-              </Avatar.Root>
+              <Avatar image={asset.icon} fallback={asset.fallback} />
             ) : (
               asset.icon
             )

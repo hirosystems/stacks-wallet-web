@@ -64,11 +64,7 @@ export function SbtcDepositTransactionItem({ deposit }: SbtcDepositTransactionIt
     <TransactionItemLayout
       openTxLink={!depositFailed ? openTxLink : () => {}}
       txCaption={truncateMiddle(bitcoinTxid, 4)}
-      txIcon={
-        <Avatar.Root>
-          <Avatar.Image alt="ST" src={SbtcAvatarIconSrc} />
-        </Avatar.Root>
-      }
+      txIcon={<Avatar fallback="ST" image={SbtcAvatarIconSrc} />}
       txStatus={
         <HStack>
           <Caption color={getDepositStatusTextColor(status)}>{getDepositStatus(status)}</Caption>
