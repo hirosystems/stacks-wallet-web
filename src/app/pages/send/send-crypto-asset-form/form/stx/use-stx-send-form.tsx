@@ -43,14 +43,10 @@ export function useStxSendForm() {
   const { data: balance } = filteredBalanceQuery;
   const availableBalance = balance?.availableUnlockedBalance ?? createMoney(0, 'STX');
 
-  const sendMaxBalance = useMemo(
-    () =>
-      convertAmountToBaseUnit(
-        availableBalance.amount.minus(stxFees?.estimates[1].fee.amount || 0),
-        STX_DECIMALS
-      ),
-    [availableBalance.amount, stxFees?.estimates]
-  );
+  const sendMaxBalance = useMemo(() => {
+    const standardFee = stxFees?.estimates[1]?.fee.amount || 0;
+    return convertAmountToBaseUnit(availableBalance.amount.minus(standardFee), STX_DECIMALS);
+  }, [availableBalance.amount, stxFees?.estimates]);
 
   const { initialValues, checkFormValidation, recipient, memo, nonce } = useStacksCommonSendForm({
     symbol: 'STX',
