@@ -14,6 +14,7 @@ import {
   stxSignMessage,
   stxSignStructuredMessage,
   stxSignTransaction,
+  stxTransferSip9Nft,
   stxTransferSip10Ft,
   stxTransferStx,
   supportedMethods,
@@ -36,6 +37,7 @@ import {
 import { rpcStxCallContract } from './rpc-methods/stx-call-contract';
 import { rpcStxDeployContract } from './rpc-methods/stx-deploy-contract';
 import { rpcStxGetAddresses } from './rpc-methods/stx-get-addresses';
+import { rpcStxTransferSip9Nft } from './rpc-methods/stx-transfer-sip9-nft';
 import { rpcStxTransferSip10Ft } from './rpc-methods/stx-transfer-sip10-ft';
 import { rpcStxTransferStx } from './rpc-methods/stx-transfer-stx';
 import { rpcSupportedMethods } from './rpc-methods/supported-methods';
@@ -114,6 +116,11 @@ export async function rpcMessageHandler(message: RpcRequests, port: chrome.runti
 
     case stxTransferSip10Ft.method: {
       await rpcStxTransferSip10Ft(message, port);
+      break;
+    }
+
+    case stxTransferSip9Nft.method: {
+      await rpcStxTransferSip9Nft(message, port);
       break;
     }
 
