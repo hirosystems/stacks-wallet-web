@@ -8,7 +8,6 @@ import {
   stacksMainnetNetwork,
   stacksTestnetNetwork,
 } from '@common/utils';
-import { hexToBytes } from '@stacks/common';
 import { useConnect } from '@stacks/connect-react-jwt';
 import { STACKS_TESTNET } from '@stacks/network';
 import { type StacksTestnet } from '@stacks/network-v6';
@@ -86,8 +85,8 @@ export const Debugger = () => {
       condition: 'sent',
       asset: 'ST000000000000000000002AMW42H.bns::names',
       assetId: tupleCV({
-        name: bufferCV(hexToBytes('stella')),
-        namespace: bufferCV(hexToBytes('id')),
+        name: bufferCVFromString('stella'),
+        namespace: bufferCVFromString('id'),
       }),
     };
     await doContractCall({
