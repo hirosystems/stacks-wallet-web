@@ -1,3 +1,22 @@
+## [6.64.0](https://github.com/leather-io/extension/compare/v6.63.0...v6.64.0) (2025-02-24)
+
+
+### Features
+
+* stx transfer sip10 ft, closes LEA-1962 ([5911b95](https://github.com/leather-io/extension/commit/5911b9559b53c0adcd47e3a45873919695c853c2))
+* use leather provider ([70bd419](https://github.com/leather-io/extension/commit/70bd419ac3c78b9bdf1e19ddf0740e245f339636))
+
+
+### Bug Fixes
+
+* failing onboarding integration test ([3aea4ef](https://github.com/leather-io/extension/commit/3aea4ef1929952a5e89d917dddcf75085bf7ecd3))
+* update fn arg serialization, closes LEA-2166 ([84515c6](https://github.com/leather-io/extension/commit/84515c687aa8d5271305fb43a60747cf9fc8e6bd))
+
+
+### Internal
+
+* use stacks descriptor ([ba3cbe8](https://github.com/leather-io/extension/commit/ba3cbe8baed666729add21a3ca2be2a40f54215e))
+
 ## [6.63.0](https://github.com/leather-io/extension/compare/v6.62.0...v6.63.0) (2025-02-20)
 
 
